@@ -245,9 +245,27 @@ const _knownGeminiModels: ({
     benchmark: undefined, // Non-benchmarkable because generates images
   },
 
+  // 3.1 Flash-Lite (Stable) - Released May 2026 (graduated from preview)
+  // First Flash-Lite model in the Gemini 3 series - cost-efficient, high-throughput
+  {
+    id: 'models/gemini-3.1-flash-lite',
+    labelOverride: 'Gemini 3.1 Flash-Lite',
+    pubDate: '20260506',
+    chatPrice: gemini31FlashLitePricing,
+    interfaces: IF_30,
+    parameterSpecs: [
+      { paramId: 'llmVndGemEffort', enumValues: ['minimal', 'low', 'medium', 'high'] },
+      { paramId: 'llmVndGeminiMediaResolution' },
+      { paramId: 'llmVndGeminiCodeExecution' },
+      { paramId: 'llmVndGeminiGoogleSearch' },
+    ],
+    benchmark: { cbaElo: 1438 }, // same lineage as gemini-3.1-flash-lite-preview
+  },
+
   // 3.1 Flash-Lite (Preview) - Released March 3, 2026
   // First Flash-Lite model in the Gemini 3 series - cost-efficient, high-throughput
   {
+    hidden: true, // superseded by stable gemini-3.1-flash-lite (May 2026)
     id: 'models/gemini-3.1-flash-lite-preview',
     labelOverride: 'Gemini 3.1 Flash-Lite Preview',
     pubDate: '20260303',
@@ -814,6 +832,7 @@ const _sortOderIdPrefix: string[] = [
   'models/gemini-3.1-pro-preview-customtools',
   'models/gemini-3.1-flash-image-preview',
   'models/gemini-3.1-flash-preview',
+  'models/gemini-3.1-flash-lite',
   'models/gemini-3.1-flash-lite-preview',
   'models/gemini-3.1-flash-tts-preview',
   'models/gemini-3.1-',
